@@ -3,11 +3,13 @@ import {
   CardContent,
   CardMedia,
   Skeleton,
+  Stack,
   Typography,
 } from "@mui/material";
 import { get } from "lodash";
 import React from "react";
 import { useMetadata } from "../hooks/metadata";
+import Attributes from "./Attributes";
 
 const NFT: React.FC<{ id?: number }> = ({ id }) => {
   const { nft, loading } = useMetadata(Number(id));
@@ -15,24 +17,44 @@ const NFT: React.FC<{ id?: number }> = ({ id }) => {
   const NFTContent = (
     <Card>
       <CardMedia
+        sx={{
+          minHeight: 233,
+        }}
         component='img'
-        height='240'
         image={get(nft, "image", "#")}
         alt={get(nft, "name", "#")}
       />
+
       <CardContent>
-        <Typography gutterBottom variant='h5' component='div'>
-          APE # {get(nft, "id", "#")}
-        </Typography>
-        <Typography variant='body2' color='text.secondary'>
-          Lizards are a widespread group of squamate reptiles, with over 6,000
-          species, ranging across all continents except Antarctica
-        </Typography>
+        <Stack direction='row' justifyContent='space-between'>
+          <Typography
+            textAlign='start'
+            gutterBottom
+            variant='h5'
+            fontWeight='bold'
+            component='div'
+            letterSpacing={2.5}
+          >
+            APE #{get(nft, "id", "#")}
+          </Typography>
+          <Typography
+            textAlign='start'
+            gutterBottom
+            variant='h5'
+            fontWeight='bold'
+            component='div'
+          >
+            Banana
+          </Typography>
+        </Stack>
+        <Attributes />
       </CardContent>
     </Card>
   );
 
-  const Loading = <Skeleton variant='rectangular' height={200} />;
+  const Loading = (
+    <Skeleton variant='rectangular' animation='pulse' height={200} />
+  );
 
   return nft && !loading ? NFTContent : Loading;
 };

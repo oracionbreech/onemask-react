@@ -16,7 +16,7 @@ const Home: React.FC = () => {
       <Suspense fallback={"loading"}>
         <Grid mt={3} container spacing={2}>
           {Array.from(Array(50).keys()).map((nft, index) => (
-            <Grid item md={3}>
+            <Grid item md={3} lg={3} xs={12} xl={3} sm={4}>
               <NFT key={nft} id={(page - 1) * 50 + index} />
             </Grid>
           ))}
