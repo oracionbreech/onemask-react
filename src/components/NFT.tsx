@@ -77,15 +77,10 @@ const NFT: React.FC<{ id?: number }> = ({ id }) => {
           >
             APE #{get(nft, "id", "#")}
           </Typography>
-          <Typography
-            textAlign='start'
-            gutterBottom
-            variant='h5'
-            fontWeight='bold'
-            component='div'
-          >
-            Banana
-          </Typography>
+          <img
+            src={`/banana-${Math.floor(Math.random() * (5 - 1) + 1)}.png`}
+            alt='banana'
+          />
         </Stack>
         <Attributes />
         <Stack direction='row' justifyContent='space-between' mt={2}>
