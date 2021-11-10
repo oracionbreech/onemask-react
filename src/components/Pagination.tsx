@@ -6,6 +6,13 @@ import React from "react";
 const PaginationContainer = styled(Stack)`
   border: 1px solid #ebbabd;
   border-radius: 1.5rem;
+  overflow: hidden;
+`;
+
+const PaginationItem = styled(Stack)`
+  :hover {
+    background-color: #ebbabda5;
+  }
 `;
 
 const getPaginationText = (
@@ -52,12 +59,11 @@ const Pagination: React.FC<{
     <PaginationContainer direction='row' justifyContent='space-evenly'>
       {items.map(({ page, type, onClick, selected, disabled }) => {
         return (
-          <Stack
+          <PaginationItem
             padding='0.5rem'
             width='100%'
             direction='row'
             justifyContent='center'
-            borderRight={type !== "next" ? "1px solid #ebbabd" : ""}
             onClick={(e) => {
               if (!disabled) onClick(e);
             }}
@@ -69,7 +75,7 @@ const Pagination: React.FC<{
             <Typography ml={0} textAlign='center'>
               {getPaginationText(type, page)}
             </Typography>
-          </Stack>
+          </PaginationItem>
         );
       })}
     </PaginationContainer>

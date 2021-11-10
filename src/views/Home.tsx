@@ -12,7 +12,11 @@ const Home: React.FC = () => {
   return (
     <Container>
       <Box mt={2} />
-      <Pagination setpage={setpage} />
+      <Grid mt={3} container spacing={2}>
+        <Grid item md={12} lg={12} xs={12} xl={6} sm={12}>
+          <Pagination setpage={setpage} />
+        </Grid>
+      </Grid>
       <Suspense fallback={"loading"}>
         <Grid mt={3} container spacing={2}>
           {Array.from(Array(50).keys()).map((nft, index) => (
