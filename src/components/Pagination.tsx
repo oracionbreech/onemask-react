@@ -35,12 +35,17 @@ const getPaginationText = (
   }
 };
 
-const Pagination: React.FC<{}> = () => {
+const Pagination: React.FC<{
+  setpage: React.Dispatch<React.SetStateAction<number>>;
+}> = ({ setpage }) => {
   const { items } = usePagination({
     count: 100,
     siblingCount: 0,
     defaultPage: 1,
     boundaryCount: 2,
+    onChange: (e, page) => {
+      setpage(page);
+    },
   });
 
   return (
