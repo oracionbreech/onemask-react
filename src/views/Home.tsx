@@ -10,7 +10,7 @@ const Home: React.FC = () => {
     <Container>
       <Box mt={2} />
       <Pagination />
-      <Statistics />
+      <Statistics maxRange={4} range={3} />
     </Container>
   );
 };
